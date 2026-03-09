@@ -20,27 +20,27 @@ export const Edit = () => {
     view.submit(data);
   };
 
-  return (
-    <Form onSubmit={handleSubmit(configureGadget)}>
-      <FormSection>
-        <Label labelFor={getFieldId(FIELD_NAME)}>
-          City
-          <RequiredAsterisk />
-        </Label>
-        <Textfield {...register("city", { required: true })} />
-         <Label>
-            Country
+    return (
+      <Form onSubmit={handleSubmit(configureGadget)}>
+        <FormSection>
+          <Label>
+            City
+            <RequiredAsterisk />
+          </Label>
+          <Textfield {...register("city", { required: true })} />
+          <Label>
+          Country
           <RequiredAsterisk />
         </Label>
         <Textfield {...register("country", { required: true })} />
-      </FormSection>
-      <FormFooter>
-        <Button appearance="primary" type="submit">
-          Submit
-        </Button>
-      </FormFooter>
-    </Form>
-  );
+        </FormSection>
+        <FormFooter>
+          <Button appearance="primary" type="submit">
+            Submit
+          </Button>
+        </FormFooter>
+      </Form>
+    );
 };
 
 const View = () => {
@@ -69,7 +69,7 @@ const View = () => {
 const App = () => {
   const context = useProductContext();
   if (!context) {
-    return "Loading...";
+    return "This is never displayed...";
   }
 
   return context.extension.entryPoint === "edit" ? <Edit /> : <View />;
