@@ -1,0 +1,25 @@
+modules:
+  jira:dashboardGadget:
+    - key: jira-weather-gadget-dashboard-gadget-ui-kit-2-hello-world-gadget
+      title: jira-weather-gadget
+      description: A hello world dashboard gadget.
+      thumbnail: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+      resource: main-resource
+      render: native
+      resolver:
+        function: resolver
+      edit:
+        resource: main-resource
+        render: native
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main-resource
+    path: src/frontend/index.jsx
+app:
+  runtime:
+    name: nodejs24.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/d03c7824-d396-47e5-87b1-84c403d2d895
