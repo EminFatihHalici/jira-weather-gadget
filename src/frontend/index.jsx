@@ -12,7 +12,6 @@ import ForgeReconciler, {
   useForm,
 } from "@forge/react";
 import { invoke, view } from "@forge/bridge";
-const FIELD_NAME = "field-name";
 
 export const Edit = () => {
   const { handleSubmit, register, getFieldId } = useForm();
@@ -25,10 +24,15 @@ export const Edit = () => {
     <Form onSubmit={handleSubmit(configureGadget)}>
       <FormSection>
         <Label labelFor={getFieldId(FIELD_NAME)}>
-          Value
+          City
           <RequiredAsterisk />
         </Label>
-        <Textfield {...register(FIELD_NAME, { required: true })} />
+        <Textfield {...register("city", { required: true })} />
+         <Label>
+            Country
+          <RequiredAsterisk />
+        </Label>
+        <Textfield {...register("country", { required: true })} />
       </FormSection>
       <FormFooter>
         <Button appearance="primary" type="submit">
@@ -56,8 +60,8 @@ const View = () => {
 
   return (
     <>
-      <Text>Value: {gadgetConfiguration[FIELD_NAME]}</Text>
-      <Text>{data ? data : 'Loading...'}</Text>
+     <Text>City: {gadgetConfiguration["city"] ? gadgetConfiguration["city"] : "Edit me"}</Text>
+     <Text>Country: {gadgetConfiguration["country"] ? gadgetConfiguration["country"] : "Edit me"}</Text>
     </>
   );
 };
