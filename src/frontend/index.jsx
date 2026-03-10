@@ -11,7 +11,13 @@ import ForgeReconciler, {
   RequiredAsterisk,
   useForm,
   ErrorMessage,
-  RadioGroup
+  RadioGroup,
+  Box, 
+  Inline,
+  xcss, 
+  Heading, 
+  Strong, 
+  Image
 } from "@forge/react";
 import { invoke, view } from "@forge/bridge";
 
@@ -97,13 +103,24 @@ const View = () => {
     extension: { gadgetConfiguration },
   } = context;
 
+  const containerStyle = xcss({
+  padding: 'space.200'
+});
+
   return (
     <>
-    {console.log(weather)}
-      <Text>City: {gadgetConfiguration["name"] ? gadgetConfiguration["name"] : "Edit me"}</Text>
-      <Text>Country: {gadgetConfiguration["country"] ? gadgetConfiguration["country"] : "Edit me"}</Text>
-      <Text>Lon: {gadgetConfiguration["lon"] ? gadgetConfiguration["lon"] : "Edit me"}</Text>
-      <Text>Lat: {gadgetConfiguration["lat"] ? gadgetConfiguration["lat"] : "Edit me"}</Text>
+     {console.log(weather)}
+    <Heading as="h2">{weather ? weather.name : 'Loading...'} Weather</Heading>
+    <Box xcss={containerStyle}>
+    <Inline>
+      <Image src={weather ? (`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`) : "https://openweathermap.org/img/wn/01d@2x.png"} alt={weather ? weather.weather[0].description : "Loading"} />
+      <Box>
+        <Text><Strong>Current Temperature</Strong> {weather ? weather.main.temp : '[ ]'} °C</Text>
+        <Text><Strong>Feels like:</Strong> {weather ? weather.main.feels_like : '[ ]'} °C</Text>
+        <Text><Strong>Humidity:</Strong> {weather ? weather.main.humidity : '[ ]'}%</Text>
+      </Box>
+    </Inline>
+    </Box>
     </>
 
   );

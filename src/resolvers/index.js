@@ -9,7 +9,9 @@ resolver.define("getText", (req) => {
   return "Hello, world!";
 });
 
-resolver.define("getLocationCoordinates", async (req) => {
+resolver.define("getCurrentWeather", async (req) => {
+  console.log(req.context.extension.gadgetConfiguration);
+
   if (req.context.extension.gadgetConfiguration) {
     const coord = req.context.extension.gadgetConfiguration;
     const url =
@@ -20,15 +22,12 @@ resolver.define("getLocationCoordinates", async (req) => {
       "&units=metric&appid=" +
       process.env.OPENWEATHER_KEY;
     const response = await fetch(url);
-
     if (!response.ok) {
-      const errmsg = `Error from Open Weather Map Geolocation API: ${response.status} ${await response.text()}`;
+      const errmsg = `Error from Open Weather Map Current Weather API: ${response.status} ${await response.text()}`;
       console.error(errmsg);
       throw new Error(errmsg);
     }
-
     const weather = await response.json();
-
     return weather;
   } else {
     return null;
