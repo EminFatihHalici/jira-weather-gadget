@@ -26,7 +26,8 @@ app:
 permissions:
   external:
     images:
-      - "https://openweathermap.org"
+      - address: https://openweathermap.org
     fetch:
       backend:
-        - api.openweathermap.org
+        - address: api.openweathermap.org
+  scopes: []
