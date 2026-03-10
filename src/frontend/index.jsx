@@ -82,11 +82,12 @@ const configureGadget = (data) => {
 };
 
 const View = () => {
-  const [data, setData] = useState(null);
   const context = useProductContext();
+  const [weather, setWeather] = useState(null)
+
 
   useEffect(() => {
-    invoke('getText', { example: 'my-invoke-variable' }).then(setData);
+    invoke('getCurrentWeather').then(setWeather);
   }, []);
 
   if (!context) {
@@ -98,6 +99,7 @@ const View = () => {
 
   return (
     <>
+    {console.log(weather)}
       <Text>City: {gadgetConfiguration["name"] ? gadgetConfiguration["name"] : "Edit me"}</Text>
       <Text>Country: {gadgetConfiguration["country"] ? gadgetConfiguration["country"] : "Edit me"}</Text>
       <Text>Lon: {gadgetConfiguration["lon"] ? gadgetConfiguration["lon"] : "Edit me"}</Text>
