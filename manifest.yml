@@ -25,6 +25,8 @@ app:
   id: ari:cloud:ecosystem::app/d03c7824-d396-47e5-87b1-84c403d2d895
 permissions:
   external:
+    images:
+      - "https://openweathermap.org"
     fetch:
       backend:
         - api.openweathermap.org
