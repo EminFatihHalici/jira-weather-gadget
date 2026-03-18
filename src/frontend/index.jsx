@@ -47,7 +47,7 @@ const getOptions = () => {
         // set showOptions to true - this will be used to display the radio button group, and the submit button
         setShowOptions(true);
       });
-    }
+    } 
   }
 };  
 
@@ -96,20 +96,12 @@ const View = () => {
     invoke('getCurrentWeather').then(setWeather);
   }, []);
 
-  if (!context) {
-    return "Loading...";
-  }
-  const {
-    extension: { gadgetConfiguration },
-  } = context;
-
   const containerStyle = xcss({
   padding: 'space.200'
 });
 
   return (
     <>
-     {console.log(weather)}
     <Heading as="h2">{weather ? weather.name : 'Loading...'} Weather</Heading>
     <Box xcss={containerStyle}>
     <Inline>

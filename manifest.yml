@@ -2,7 +2,7 @@ modules:
   jira:dashboardGadget:
     - key: jira-weather-gadget-dashboard-gadget-ui-kit-2-hello-world-gadget
       title: jira-weather-gadget
-      description: A hello world dashboard gadget.
+      description: A weather dashboard gadget.
       thumbnail: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
       resource: main-resource
       render: native
